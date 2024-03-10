@@ -1,9 +1,6 @@
 import User from '../models/userModel.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-// import dotenv from 'dotenv'
-
-// dotenv.config()
 
 export const signUp = async (req, res, next) => {
     try {
@@ -54,7 +51,7 @@ export const signIn = async (req, res, next) => {
 
             res.status(200).cookie('access_token', token, {
                     httpOnly: true,
-                }).json(rest)
+                }).json({user: rest, success: true})
         }
     } catch (error) {
         next(error);
