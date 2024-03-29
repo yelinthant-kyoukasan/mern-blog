@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 export const updateUser = async (req, res, next) => {
     // console.log(req.user)
-    if (req.user.id !== req.params.userId){
+    if (req.user.id !== req.params.userId) {
       return res.status(403).json({mssg: "Access denied!", success: false});
     }
     if (req.body.password) {
@@ -25,7 +25,7 @@ export const updateUser = async (req, res, next) => {
         }
         if (!req.body.username.match(/^[a-zA-Z0-9]+$/)) {
             return res.status(400).json({mssg: 'Username can only contain letters and numbers', success: false});
-          }
+        }
     }
     try {
         const updatedUser = await User.findByIdAndUpdate(
